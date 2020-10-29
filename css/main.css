@@ -1,0 +1,65 @@
+body, html {
+    height: 100%;
+    margin: 0;
+    color: black
+}
+
+
+#container-main {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 100%;
+    height: 100%;
+    margin-top: 50px;
+    padding-top: 30px;
+    justify-content: center;
+}
+
+.header-main {
+    min-height: 30px;
+    background-color: #b7bcdb;
+    color: white;
+}
+
+.header-main > div {
+    text-align: center;
+    padding: 20px 0 20px 0;
+}
+
+.user {
+    margin: 0px 10px 0px 10px;
+}
+
+.user a {
+    display: flex;
+    width: 100%;
+}
+
+.profile-card {
+    height: auto;
+    border: 1px solid black;
+    border-radius: 5px;
+}
+
+.profile-card:hover {
+    background-color: #F1F1F1;
+}
+
+.picture {
+    text-align: center;
+    padding-top: 20px;
+}
+
+.picture img{
+    width: 50%;
+}
+
+.profile-card > .info {
+    text-align: center;
+}
+
+h3 {
+    color: inherit;
+    text-decoration: none;
+}

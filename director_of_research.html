@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>Director of research</title>
+	<script type="text/javascript" src="d3/d3.v4.js"></script>
+	<script src="lib/models/ref14data.js"></script>
+	<script src="lib/views/dor/utils/shapes.js"></script>
+	<script src="lib/views/dor/utils/layout.js"></script>
+	<script src="lib/filters/filters.js"></script>
+	<script src="lib/views/dor/barchart.js"></script>
+	<script src="lib/views/dor/ukMap.js"></script>
+	<script src="lib/views/dor/tree.js"></script>
+	<script src="lib/views/dor/topics.js"></script>
+	<script src="lib/views/dor/correlation.js"></script>
+	<script src="lib/views/dor/barchartUOA.js"></script>
+	<script src="lib/views/dor/buttons.js"></script>
+	<script src="lib/views/dor/dropdown.js"></script>
+
+
+
+
+	<script src="http://d3js.org/topojson.v1.min.js"></script>
+	<script src="lib/views/dor/init.js"></script> 
+
+
+	<link rel="stylesheet" type="text/css" href="css/main.css"/>
+	<link rel="stylesheet" type="text/css" href="css/dor/main.css"/>
+	<link rel="stylesheet" type="text/css" href="css/dor/bubbles.css"/>
+	<link rel="stylesheet" type="text/css" href="css/dor/map.css"/>
+
+
+<body>
+	<div id='header-title'>
+		<h1>Director of Research</h1>
+	</div>
+	<div class='description'>
+		<p>These visualizations are designed for a Director of Research of a Unit of Assessment within a university.
+			They will be able to browse different universitites and locations to see what units of assesment revieve
+			better ratings than other. By investigating this, they will be able to make informed decisions on how to write the REF 5 submissions
+			to maximise their REF Assessment.
+		 </p>
+
+		<p>In the first graph you can choose a unit of assessment for any university to see their overall ratings,
+			from 1 to 4 stars per subject. The map on the right shows the location of any of the selected universities.
+			The map also shows the 4-star density by region.
+		</p>
+
+		<p>In the bubble graph you will see the subjects per region with the most 4 star rating. The larger the
+			bubble for a Unit Of Assessment, the more 4 stars it has. The user can choose to see overall, impact, outputs or
+			environment ratings. On the bar plot on the right, the user has a more detailed view of the overall ratings a user revieved
+			in the university selected.
+		</p>
+
+	</div>
+	<header id="header">
+		<div class="dropdown-wrapper">
+
+			<div id="uni-dropdown"> </div>
+
+			<div id="uoa-dropdown"></div>
+
+		</div>
+	</header>
+
+	<main id="container">
+		<div class="row row-first"></div>
+		<div class="row row-second">
+			<div class="chart-container bubbles tree">
+				<div id="buttons">
+					<button class="overall" type="button">overall</button>
+					<button class="impact" type="button">impact</button>
+					<button class="outputs" type="button">outputs</button>
+					<button class="environment" type="button">environment</button>
+				</div>
+			</div>
+		</div>
+		<div class='description'>
+			<p>
+				This chart shows a topic to topic correlation based on how often they appear together. The Director of Research can hover on top of any
+				square and it will tell them how correlated they are. Red squares mean that the values are more correlated than white squares.
+			</p>			
+		</div>
+		<div class="row row-fourth">
+			<div class="chart-container correlation"></div>
+		</div>
+
+		<div class="row row-third">
+			<div class="chart-container bubbles topics"></div>
+		</div>
+	</main>
+		
+	</div>
+</body>
+</html>

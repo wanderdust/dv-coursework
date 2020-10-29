@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>Manager</title>
+	<script type="text/javascript" src="d3/d3.v4.js"></script>
+	<script src="lib/models/ref14data.js"></script>
+	<script src="lib/filters/filters_manager.js"></script>
+    <script src="lib/views/manager/bubbles.js"></script>
+    <script src="lib/views/manager/dropdown.js"></script>
+	<script src="lib/views/manager/barchart.js"></script>
+	<script src="lib/views/manager/piechart.js"></script>
+
+	<script src="lib/views/manager/init.js"></script> 
+
+
+    <link rel="stylesheet" type="text/css" href="css/main.css"/>
+    <link rel="stylesheet" type="text/css" href="css/manager/main.css"/>
+	<link rel="stylesheet" type="text/css" href="css/manager/bubbles.css"/>
+
+
+
+<body>
+	<div id='header-title'>
+		<h1>University Manager</h1>
+	</div>
+	<div class='description'>
+		<p>
+			These visualizations are designed for the university manager or members of their support staff.
+		</p>
+		<p>
+			In the bubble chart the user can see the locations of UK university by number of 4-star ratings. Larger bubbles mean that there are 
+			more 4-star ratings in that area. If a user clicks on a bubble, it will show them the average 4 star ratings for each university in that area.
+		</p>
+		<p>
+			On the dropdown on the right, the user can select a university and compare the average marks from that university to the selected one.
+		</p>
+
+
+	</div>
+	<header id="header">
+		<div class="dropdown-wrapper">
+
+			<div id="uni-dropdown"> </div>
+
+			<div id="uoa-dropdown"></div>
+
+		</div>
+	</header>
+
+	<main id="container">
+		<div class="row row-first">
+            <div class="chart-container bubbles" style="min-height: 600px !important;"></div>
+		</div>
+		<div class='description piechart'>
+			If a user clicks on any of the subjects on the chart, they will see a pie chart indicating all the ratings from that university
+		</div>
+		<div class="row row-second" style="min-height: 600px !important;">
+
+		</div>
+	</main>
+		
+	</div>
+</body>
+</html>

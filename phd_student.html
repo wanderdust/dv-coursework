@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>PhD Student</title>
+	
+	<!-- Adding d3.v4.js & topojson for the UK map functionality  -->
+	<script type="text/javascript" src="d3/d3.v4.js"></script>
+	<script src="http://d3js.org/topojson.v1.min.js"></script>
+	<!-- Models -->
+	<script src="lib/models/ref14data.js"></script>
+	<script src="lib/models/tier.js"></script>
+	<!-- Filters -->
+	<script src="lib/filters/filters_phd.js"></script>
+	<!-- Views -->
+	<script src="lib/views/phd/ukMap.js"></script>
+	<script src="lib/views/phd/init.js"></script> 
+	<script src="lib/views/phd/stackedBar.js"></script>
+	<script src="lib/views/phd/tier.js"></script>
+	<script src="lib/views/phd/tree_v001.js"></script>
+	<script src="lib/views/phd/dropdown.js"></script>
+	<script src="lib/views/phd/ranking.js"></script>
+	<script src="lib/views/phd/dendrogram.js"></script>
+	<!-- Adding Robot font style from google apis -->
+	<link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
+	
+	<!-- Some css -->
+	<link rel="stylesheet" type="text/css" href="css/main.css"/>
+	<link rel="stylesheet" type="text/css" href="css/dor/main.css"/>
+	<link rel="stylesheet" type="text/css" href="css/dor/bubbles.css"/>
+	<link rel="stylesheet" type="text/css" href="css/dor/map.css"/>
+	<link rel="stylesheet" type="text/css" href="css/phd/tree-v001.css"/>
+
+	<style type="text/css">
+		header{
+			min-height: 3%;
+			padding: 10px;
+			padding-top: 24px;
+			text-align: center;
+    		font-size: -webkit-xxx-large;
+    		background-color: #b7bcdb;
+		}
+		
+		body{
+			padding-top: 20px;
+			font-family: 'Roboto', sans-serif;
+			padding-left: 5% !important;
+			padding-right: 5% !important;
+		}
+
+		* {
+			box-sizing: border-box;
+		}
+
+		/* Create two equal columns that floats next to each other */
+		.column {
+		  float: left;
+		  width: 50%;
+		  padding: 10px;
+		  overflow: auto;
+		}
+
+		/* Clear floats after the columns */
+		.row_content:after {
+		  content: "";
+		  display: table;
+		  clear: both;
+		  padding-top: 5px;
+		  padding-bottom: 5px;
+		}
+
+		.map-container{
+			box-shadow: none !important;
+			border-color: black;
+		    border: 2px;
+		    border-style: dotted;
+		}
+
+		.pin{
+			height: 15px !important;
+		}
+
+	</style>
+</head>
+
+<body>
+	<header>PhD Student</header>
+	<content>
+		<section style="min-height: 115px;">
+			<div>
+				<p>
+					This page is made for early career researchers, such as a PhD student, willing to continue developing its career collaborating with/at another university, considering these particular key points:
+					<ul>
+					  	<li>Finding other universities within its unite of assessment and identifying where the geographical foci is around the UK.</li>
+					  	<li>Knowing the current ranking places for each university within its unite of assessment according to the overall marks from the REF.</li>
+					  	<li>Analysing the university individual marks and comparing them with other universities in the area.</li>
+					</ul>
+					Furthermore, for international students in need of finding licensed-sponsors companies, our last charts illustrates the cities and their total number of companies, which can provide a certificate of sponsorship, around England, Scotland, North Ireland and Wales. 
+				</p>
+			</div>
+			<div><p>Let's begin selecting your university or one of the university of your interests:</p></div>
+			<div id="uni-dropdown" style="min-height: 40px;"></div>
+			<div><p>
+					Once a university is selected, it's time to select the unit of assessment desired:
+				</p>
+			</div>
+			<div id="uoa-dropdown" style="min-height: 40px;"></div>
+		</section>
+		<section>
+			<div class="row_content">
+				<div class="column" style="height: 631px;">
+					<p><b>UNIVERSITIES RANKING TABLE</b></p>
+				    <p>In this table, the universities collaborating on the selected unite of assessment are ranked by the REF overall mark. There are three columns descriging the country, name and rank position of each university. Note. Move the mouse over a university's name to see where it is located.</p>
+				    <div id="table_ranking">
+				    	<table id="rankings" style="width:100%; text-align: left;">
+				    		<thead><tr><th>Country</th><th>University</th><th>Rank</th></tr></thead>
+				    		<tbody></tbody>
+				    	</table>
+				    </div>
+				</div>
+				<div class="column">
+					<p><b>UNITED KINGDOM MAP</b></p>
+				    <p>
+				    	Once a unite of assessment is selected, this UK map allocates each university from the ranking table with a red pin.
+				    	Furthermore, this table can be filtered by drawing a squared area over the pins you want to filter.  
+				    </p>
+					<div class="row row-first" style="min-height: 500px;"></div>
+				</div>
+			</div>
+		</section>
+		<section>
+			<div class="row_content">
+				<div class="column" style="min-height: 600px;">
+					<p><b>UNIVERSITIES WITHIN ITS REGION</b></p>
+				    <p>Initially, this dendrogram clusters all the universities by region, and (if exist) region's area. Then, when a unite of assessment is selected, this hierarchical dendrogram only displays universities within the unite of assesment selected.</p>
+				    <p>Note. Once a unite of assessment is selected, this dendrogram illustrates properly the list of universities.</p>
+				    <div id="dendrogram"></div>
+				</div>
+				<div class="column" style="min-height: 670px;">
+					<p><b>REATED RESEARCHES</b></p>
+				    <p>For each seeable university on the dendrogram, this stacked bar chart digs into details and shows the total number of researches rated with 4* stars (	e.g. world-leading), 3* stars (e.g. internationally excellent), 2* starts (e.g. recognised internationally), and 1* star (e.g. recognised nationaly).
+				    	<br>Note. Move the mouse over any bar to discover the exact number of researches.
+				    </p>
+					<div id="stackedChart">
+						<div style="min-height: 680px;"></div>
+					</div>
+				</div>
+			</div>
+		</section>
+		<section>
+			<p><b>CERTIFICATES OF SPONSORHIP</b></p>
+			<p>Finally, this sections is specially made for international students in need of finding licensed-sponsors companies. As well-known, in order to have the right to work in the United Kingdom, foreigners need to be sponsored by a licenced company; in fact, thousends of applications are directly rejected as without this certificate, for many companies, it is not possible to consider any of these applicants. For this reason, we decided to cross-over the universities' data and the best employable cities around the UK with their total number of licenced companies*.</p>
+			<p>Following, there are four treemaps illustrating the cities and their total number of licenced companies, grouped by the visa categories in England, Scotland, North Ireland and Wales. Moreover, you can move the mouse over a block and read a detailed description.</p>
+			<p>These are the visa categories: 
+				<b>Tier 2 General</b> <span style="color:#7bb8b4;background:#7bb8b4;">&#9634;</span>, 
+				<b>Intra Company Transfers (ICT)</b> <span style="color:#314d5e;background:#314d5e;">&#9634;</span>, 
+				<b>Creative & Sporting</b> <span style="color:#493d5c;background:#493d5c;">&#9634;</span>, 
+				<b>Religious Workers</b> <span style="color:#94384d;background:#94384d;">&#9634;</span>, 
+				<b>Voluntary Workers</b> <span style="color:#dc7582;background:#dc7582;">&#9634;</span>, 
+				<b>Sport</b> <span style="color:#8a8a8a;background:#8a8a8a;">&#9634;</span>, 
+				<b>Exchange</b> <span style="color:#e7e7e7;background:#e7e7e7 ;">&#9634;</span>, 
+				<b>International Agreements</b> <span style="color:#efca51;background:#efca51 ;">&#9634;</span>, 
+				<b>Seasonal Worker</b> <span style="color:#5c8437;background:#5c8437 ;">&#9634;</span>.</p>
+			</div>
+			<div class="row_content">
+				<div class="column ENG">
+					<p><b>England</b></p>
+				</div>
+				<div class="column SCT">
+					<p><b>Scotland</b></p>
+				</div>
+			</div>
+			<div class="row_content">
+				<div class="column NIR">
+					<p><b>North Ireland</b></p>
+				</div>
+				<div class="column WLS">
+					<p><b>Wales</b></p>
+				</div>
+			</div>
+		</section>
+	</content>
+</body>
+</html>

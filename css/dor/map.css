@@ -1,0 +1,75 @@
+.subunit {
+  transition: 400ms opacity;
+}
+
+.subunit:hover {
+    opacity: 0.6;
+}
+
+.subunit.SCT {
+    fill: #cccc99;
+}
+.subunit.WLS {
+    fill: #8ad0d6;
+}
+.subunit.NIR {
+    fill: #f9c7ae;
+}
+.subunit.ENG {
+    fill: #dcd;
+}
+
+.subunit.IRL,
+.subunit-label.IRL {
+  fill: #f6f6f6;
+}
+
+.subunit.IRL:hover {
+  opacity: 1;
+}
+
+.subunit-boundary {
+  fill: none;
+  stroke: #777;
+  stroke-dasharray: 2,2;
+  stroke-linejoin: round;
+}
+
+.subunit-boundary.IRL {
+  stroke: #aaa;
+}
+
+.subunit-label {
+  fill: #777;
+  fill-opacity: 1;
+  font-size: 20px;
+  font-weight: 300;
+  text-anchor: middle;
+}
+
+.place,
+.place-label {
+  fill: #444;
+}
+
+text {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 10px;
+  pointer-events: none;
+}
+
+.pin {
+  height: 20px;
+  width: auto;
+}
+
+.map-container.chart-container {
+  box-shadow: 2px 2px #edf1f7;
+  padding-left: 120px;
+  border-radius: 5px;
+  flex-direction: column;
+}
+
+.density:hover {
+  opacity: 0.9
+}

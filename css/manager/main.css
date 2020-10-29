@@ -1,0 +1,114 @@
+body {
+    display:flex;
+    flex-direction:column;
+    height: 1500px;
+    padding-right: 10%;
+    padding-left: 10%;
+}
+
+#container {
+    width:100%;
+    height: 100%;
+    display:flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+}
+
+.row {
+    display: flex;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+}
+
+.row-second {
+    min-height: 700px;
+}
+
+.dropdown-wrapper {
+    float:right;
+}
+
+.chart-container {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    min-width: 600px;
+    overflow: hidden;
+}
+
+svg {
+    height:100%;
+    width: 100%;
+    display:flex;
+    overflow:visible;
+}
+
+g{
+    overflow: visible;
+}
+
+.chart {
+    text-align: center;
+}
+
+.hover {
+    opacity: 0.9;
+}
+
+rect:hover {
+    opacity: 0.8;
+}
+
+.title {
+    max-width: 450px;
+    word-wrap: break-word;
+    padding: 0 30px 0 10px;
+    width: 100%;
+    z-index: 9999;
+}
+
+select {
+    min-width: 35px;
+    width: 550px;
+    margin: 5px 10px;
+    padding-left: 5px;
+    padding-right: 5px;
+    border: 1px solid black;
+    height: 30px;
+    background-color: white;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background: url("/images/arrow.svg") no-repeat right white;
+    background-size: 12px;
+    background-origin: content-box;
+  }
+
+.line:hover {
+    stroke-width: 4px;
+    stroke: #FF4D4D;
+}
+
+path.arc {
+    stroke: white;
+    stroke-width: 5px;
+}
+
+.pietext {
+    stroke: black;
+    stroke-width: 0.5px;
+}
+
+#header-title {
+    display: flex;
+    align-items: center;
+    justify-content: middle;
+    background-color: #b7bcdb;
+    padding: 2em 2em
+}
+
+#header-title > h1 {
+  margin: 0 auto;
+}
